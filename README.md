@@ -1,5 +1,6 @@
 # ASAP
 Automated Sanger Analysis Pipeline (ASAP): a tool for rapidly analyzing Sanger sequencing data with minimum user interference.
+(previously AMAP)
 1.	Introduction
 ASAP is a code written in Python 3.x language. It incorporates various other programs to achieve its task. ASAP accepts AB1 chromatogram files in pairs (Forward & Reverse), reference sequence as template in FASTA format and generates final alignment. The program converts AB1 files into FASTQ, reverse complements reverse sequence, trims low quality ends of the sequences, aligns and creates a consensus sequence of these two forward and reverse sequence, aligns with the template sequence and displays the alignment. Also, the program saves all these files for future reference and study. Please note that the program will only display the alignment if not multiplexed, i.e. if only one pair of sequence is given to the program. In case of multiplexed runs, the program only saves the files which can be viewed easily in any alignment viewer program. Optionally, if provided with a FASTA file of exonic region and a reference amino acid file, ASAP also extracts the exonic region from the input sequence, translates it into +1, +2 & +3 frames and aligns it with the test reference amino acid sequence.
 
