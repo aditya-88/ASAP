@@ -1,0 +1,24 @@
+
+
+
+ CLUSTAL 2.1 Multiple Sequence Alignments
+
+
+Sequence format is Pearson
+Sequence 1: NG_012856  44128 bp
+Sequence 2: 15.1F        219 bp
+Start of Pairwise alignments
+Aligning...
+
+Sequences (1:2) Aligned. Score:  93
+Guide tree file created:   [/Users/aditya/Codes/ASAP/test/Complete_Set/15.1F_001_A02_2016-05-19_result.dnd]
+
+There are 1 groups
+Start of Multiple Alignment
+
+Aligning...
+Group 1: Sequences:   2      Score:4089
+Alignment Score 1527
+
+CLUSTAL-Alignment file created  [/Users/aditya/Codes/ASAP/test/Complete_Set/15.1F_001_A02_2016-05-19_result.aln]
+
