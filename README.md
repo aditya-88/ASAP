@@ -59,13 +59,20 @@ NCBI BLAST+:  ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 
 ## Troubleshooting ##
 A.	If ASAP is failing, you can provide `check` argument to it and it will tell you exactly what is failing. Install them and make sure they are in your system’s PATH. Also, make sure you followed the installation instructions carefully.
+
 B.	Very poor alignment:
+
 a.	Make sure you gave the sequences to ASAP in proper order. All forward sequences for all samples first, followed by all reverse sequences of all samples second and finally the reference sequence.
+
 b.	Make sure you/ sequencing provider did not reverse complement the reverse sequences.
+
 c.	Although, quality trimming is performed but still if the alignment is not at all right and all above mentioned troubleshooting has been followed, manually see the chromatogram files to check for background noise.
+
 C.	I installed all the requirements but still ASAP is unable to use them!
+
 a.	Make sure you have installed the requirements like BioPython with Python 3. If you have installed it specifically with a sub version of Python 3 like Python 3.5 and the program is not working, then kindly edit the first line of the code using the same method described in installation instruction as:
 “#!/usr/bin/env python3” to “#!/usr/bin/env python3.5” or any other version that you installed your BioPython and other dependencies with.
+
 Also, make sure you do not use Python 2.x. The program will only work with Python 3.x.
 
 ## Citation ##
