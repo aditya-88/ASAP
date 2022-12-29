@@ -4,15 +4,23 @@
 (previously AMAP)**
 
 ## Introduction ##
-ASAP is a code written in Python 3.x language. It incorporates various other programs to achieve its task. ASAP accepts AB1 chromatogram files in pairs (Forward & Reverse), reference sequence as template in FASTA format and generates final alignment. The program converts AB1 files into FASTQ, reverse complements reverse sequence, trims low quality ends of the sequences, aligns and creates a consensus sequence of these two forward and reverse sequence, aligns with the template sequence and displays the alignment. Also, the program saves all these files for future reference and study. Please note that the program will only display the alignment if not multiplexed, i.e. if only one pair of sequence is given to the program. In case of multiplexed runs, the program only saves the files which can be viewed easily in any alignment viewer program. Optionally, if provided with a FASTA file of exonic region and a reference amino acid file, ASAP also extracts the exonic region from the input sequence, translates it into +1, +2 & +3 frames and aligns it with the test reference amino acid sequence.
+ASAP is a code written in Python 3.x language. It incorporates various other programs to achieve its task.
+
+ASAP accepts AB1 chromatogram files in pairs (Forward & Reverse), reference sequence as template in FASTA format and generates final alignment.
+
+The program converts AB1 files into FASTQ, reverse complements reverse sequence, trims low quality ends of the sequences, aligns and creates a consensus sequence of these two forward and reverse sequence, aligns with the template sequence and displays the alignment. Also, the program saves all these files for future reference and study. Please note that the program will only display the alignment if not multiplexed, i.e. if only one pair of sequence is given to the program. In case of multiplexed runs, the program only saves the files which can be viewed easily in any alignment viewer program. Optionally, if provided with a FASTA file of exonic region and a reference amino acid file, ASAP also extracts the exonic region from the input sequence, translates it into +1, +2 & +3 frames and aligns it with the test reference amino acid sequence.
 
 ## Installation ##
 Open the code in text viewer (nano/ emacs etc.) on your system and edit the lines 15 & 16 as below:
 
+```sh
 seqtk = "Path to SEQTK executable"
 seaview = "Path to SeqView executable"
+ ```
  
-ASAP can be executed directly without any installation. However, for easy usage, make the code executable using "chmod +x ASAP" and copy it to your system's PATH for invoking it from any folder.
+ASAP can be executed directly without any installation.
+
+However, for easy usage, make the code executable using "chmod +x ASAP" and copy it to your system's PATH for invoking it from any folder.
 
 ## Usage ##
 For the impatient:
@@ -39,13 +47,18 @@ Kindly note that SeaView will not be launched automatically in case of multiplex
 
 ## Requirements ##
 Linux/Unix System with EMBOSS, SEQTK, Python 3.x, BioPython & CLUSTALW2 installed.
+
 Made and tested on Mac OS X 10.11.4 with Pyhton 3.4, BioPython 1.66, EMBOSS 6.5.7, SEQTK, CLUSTALW2 2.1
+
 You can download these freely available softwares from the below given links:
+
+```text
 EMBOSS : http://emboss.sourceforge.net/download/
 SEQTK : https://github.com/lh3/seqtk
 BioPython : http://biopython.org/wiki/Main_Page
 SeaView : http://doua.prabi.fr/software/seaview
 NCBI BLAST+:  ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/  
+```
 
 ## Description of results ##
 *._Forward_Sequence_QC.fastq : QC Trimmed Forward Sequence in FASTQ format.
