@@ -50,6 +50,8 @@ Linux/Unix System with EMBOSS, SEQTK, Python 3.x, BioPython & CLUSTALW2 installe
 
 Made and tested on Mac OS X 10.11.4 with Pyhton 3.4, BioPython 1.66, EMBOSS 6.5.7, SEQTK, CLUSTALW2 2.1
 
+*Python Package: `easygui` is required for the installer but not the ASAP code.*
+
 You can download these freely available softwares from the below given links:
 
 ```text
