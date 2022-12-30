@@ -4,3 +4,9 @@
 # macOS Specific
 __MACOS/
 .DS_Store
+
+# Result files
+*.fast*
+*.aln
+*.dnd
+*.txt
