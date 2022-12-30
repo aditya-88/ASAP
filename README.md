@@ -15,7 +15,6 @@ Open the code in text viewer (nano/ emacs etc.) on your system and edit the line
 
 ```sh
 seqtk = "Path to SEQTK executable"
-seaview = "Path to SeqView executable"
  ```
  
 ASAP can be executed directly without any installation.
@@ -43,7 +42,6 @@ Typical Usage for such a scenario:
 
 `ASAP F/R/FR/FE/RE/FRE Forward_seq_Sample_A.ab1 Forward_seq_Sample_B.ab1 Reverse_seq_Sample_A.ab1 Reverse_seq_Sample_B.ab1 Reference_Seq.fasta`
 
-Kindly note that SeaView will not be launched automatically in case of multiplexed runs. You can manually open the *._result.aln file to visualize the alignment.
 
 ## Requirements ##
 Linux/Unix System with EMBOSS, SEQTK, Python 3.x, BioPython & CLUSTALW2 installed.
@@ -60,7 +58,6 @@ You can download these freely available softwares from the below given links:
 EMBOSS : http://emboss.sourceforge.net/download/
 SEQTK : https://github.com/lh3/seqtk
 BioPython : http://biopython.org/wiki/Main_Page
-SeaView : http://doua.prabi.fr/software/seaview
 NCBI BLAST+:  ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/  
 ```
 
