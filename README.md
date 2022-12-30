@@ -11,12 +11,27 @@ ASAP accepts AB1 chromatogram files in pairs (Forward & Reverse), reference sequ
 The program converts AB1 files into FASTQ, reverse complements reverse sequence, trims low quality ends of the sequences, aligns and creates a consensus sequence of these two forward and reverse sequence, aligns with the template sequence and displays the alignment. Also, the program saves all these files for future reference and study. Please note that the program will only display the alignment if not multiplexed, i.e. if only one pair of sequence is given to the program. In case of multiplexed runs, the program only saves the files which can be viewed easily in any alignment viewer program. Optionally, if provided with a FASTA file of exonic region and a reference amino acid file, ASAP also extracts the exonic region from the input sequence, translates it into +1, +2 & +3 frames and aligns it with the test reference amino acid sequence.
 
 ## Installation ##
-Open the code in text viewer (nano/ emacs etc.) on your system and edit the lines 15 & 16 as below:
 
-```sh
-seqtk = "Path to SEQTK executable"
- ```
- 
+ASAP doesn't require any installation.
+
+Just make sure the system requirements (listed in the requirements section) are met.
+
+Or, use one of the following **Docker** images:
+
+```text
+ARM (Apple M1/M2 etc.): saditya88/asap:arm
+x86_64: saditya88/asap:latest
+```
+You may simply pull one of these images and run the program.
+
+Example on an Apple M1 Max:
+
+```shell
+docker pull saditya88/asap:arm
+
+docker run --rm -v /home/aditya/my_files/:/data/ saditya88/asap:arm FR /data/forward1.ab1 /data/reverse1.ab1 /data/reference.fasta
+```
+
 ASAP can be executed directly without any installation.
 
 However, for easy usage, make the code executable using "chmod +x ASAP" and copy it to your system's PATH for invoking it from any folder.
