@@ -50,6 +50,8 @@ Linux/Unix System with EMBOSS, SEQTK, Python 3.x, BioPython & CLUSTALW2 installe
 
 Made and tested on Mac OS X 10.11.4 with Pyhton 3.4, BioPython 1.66, EMBOSS 6.5.7, SEQTK, CLUSTALW2 2.1
 
+**Recently tested to successfully on a MacBook Pro with ARM based M1 Max CPU running macOS Venture, 13.1 and Python 3.10.9**
+
 *Python Package: `easygui` is required for the installer but not the ASAP code.*
 
 You can download these freely available softwares from the below given links:
@@ -63,6 +65,7 @@ NCBI BLAST+:  ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 ```
 
 ## Description of results ##
+```text
 *._Forward_Sequence_QC.fastq : QC Trimmed Forward Sequence in FASTQ format.
 *._Reverse_Sequence_QC.fastq : QC Trimmed Reverse complemented reverse sequence in FASTQ format.
 *._consensus.fasta : Consensus sequence in FASTA format.
@@ -71,6 +74,7 @@ NCBI BLAST+:  ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 *._result.fasta_report.txt : ClustalW2 alignment report.
 *.consensus_BLAST.txt: Simplified BLAST result between Exonic sequence and extracted exon.
 *.EXON_*: Files related with Exon extraction.
+```
 
 ## Troubleshooting ##
 A.	If ASAP is failing, you can provide `check` argument to it and it will tell you exactly what is failing. Install them and make sure they are in your system’s PATH. Also, make sure you followed the installation instructions carefully.
@@ -96,5 +100,7 @@ If you use the ASAP in any of your work, then kindly cite the following:
 Singh A, Bhatia P. Automated Sanger Analysis Pipeline (ASAP): A Tool for Rapidly Analyzing Sanger Sequencing Data with Minimum User Interference. J Biomol Tech [Internet]. 2016 Oct 17 [cited 2016 Nov 12]; Available from: http://www.ncbi.nlm.nih.gov/pubmed/27790076
 
 Thank you!
+
+*Please note that `ASAP` has recenlty gone through a major overhaul, it might be that a few of the descriptions written above will not match, but the functionality remains the same*
 
 ***Hope ASAP helps you in achieving things faster and better***
