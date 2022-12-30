@@ -50,8 +50,6 @@ Made and tested on Mac OS X 10.11.4 with Pyhton 3.4, BioPython 1.66, EMBOSS 6.5.
 
 **Recently tested to successfully on a MacBook Pro with ARM based M1 Max CPU running macOS Ventura, 13.1 and Python 3.10.9**
 
-*Python Package: `easygui` is required for the installer but not the ASAP code.*
-
 You can download these freely available softwares from the below given links:
 
 ```text

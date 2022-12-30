@@ -9,19 +9,14 @@ from pathlib import Path
 threads = multiprocessing.cpu_count()
 check = 0
 #   Setting Up  #
-version = "1.0"
+version = "1.1"
 print("Welcome to ASAP! version {}!\n".format(version))
 citation = "Singh A, Bhatia P. Automated Sanger Analysis Pipeline (ASAP): A Tool for Rapidly Analyzing Sanger Sequencing Data with Minimum User Interference. J Biomol Tech [Internet]. 2016 Oct 17\nAvailable from: http://www.ncbi.nlm.nih.gov/pubmed/27790076"
-#   EDIT THESE VALUES TO MATCH YOUR INSTALLATION    #
-# Also, if execution fails, edit the first line to match with your Python version.
-#SEQTK
-seqtk = "/usr/local/bin/seqtk"
+
 if "darwin" in sys.platform:
     clustal = "clustalw2"
 else:
     clustal = "clustalw"
-
-#   DO NOT EDIT ANYTHING BELOW THIS LINE    #
 
 #   Functions    #
 
@@ -29,10 +24,11 @@ else:
 def check_system():
     check = 0
     print("\nChecking system for installation of required programs and the commandline arguments.\nTotal 5 tests to perform.")
-    if os.path.isfile(seqtk):
-        print("\n1. SEQTK seems installed!\t\tPASS")
+    # Check if SEQTK is installed
+    if distutils.spawn.find_executable("seqtk") is not None:
+        print("1. SEQTK seems installed.\t\tPASS")
     else:
-        print("\n1. SEQTK was not found!\nPlease make sure it's installed and location updated at the top of this file.\t\tFAIL")
+        print("1. SEQTK does not seems to be install. Install it and make sure it is available in System PATH\t\tFAIL")
         check+=1
     try:
         from Bio import SeqIO
@@ -68,7 +64,7 @@ def check_system():
 # Main function
 def main():
     #   Check system and command    #
-    if sys.argv[1].upper() != "CHECK" and len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("Arguments missing!\n")
         print("Usage: ASAP! F/R/FR/FE/RE/FRE Forward_seq.ab1 Reverse_seq.ab1 Exons.fasta AminoAcidReference.fasta Reference_seq.fasta")
         print("Where:")
@@ -137,12 +133,12 @@ def main():
             reverse_file = open(Forward_seq.name[:-4]+"_Reverse_Sequence.fastq", 'w+b')
             Forward_fastq = SeqIO.convert(Forward_seq, "abi",forward_file.name, "fastq" )
             Reverse_fastq = SeqIO.convert(Reverse_seq, "abi",reverse_file_not_rev.name, "fastq" )
-            os.system(seqtk+" seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
+            os.system("seqtk  seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
             print("Performing Quality control and building consensus sequence....")
-            os.system(seqtk+" trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk+" trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk + " seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_N_.fasta")
-            os.system(seqtk + " seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_N_.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_N_.fasta")
+            os.system("seqtk  seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_N_.fasta")
             os.system("merger "+"-verbose "+ "-asequence "+forward_file.name[:-23] + "_N_.fasta"+" -bsequence "+reverse_file.name[:-23] + "_N_.fasta"+" -outfile "+reverse_file.name[:-23]+"_consensus_alignment.aln "+"-outseq "+reverse_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(reverse_file.name[:-23]+"_consensus.fasta")
@@ -192,12 +188,12 @@ def main():
             reverse_file = open(Forward_seq.name[:-4]+"_Reverse_Sequence.fastq", 'w+b')
             Forward_fastq = SeqIO.convert(Forward_seq, "abi",forward_file.name, "fastq" )
             Reverse_fastq = SeqIO.convert(Reverse_seq, "abi",reverse_file_not_rev.name, "fastq" )
-            os.system(seqtk+" seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
+            os.system("seqtk  seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
             print("Performing Quality control and building consensus sequence....")
-            os.system(seqtk+" trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk+" trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk + " seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_N_.fasta")
-            os.system(seqtk + " seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_N_.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_N_.fasta")
+            os.system("seqtk  seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_N_.fasta")
             os.system("merger "+"-verbose "+ "-asequence "+forward_file.name[:-23] + "_N_.fasta"+" -bsequence "+reverse_file.name[:-23] + "_N_.fasta"+" -outfile "+reverse_file.name[:-23]+"_consensus_alignment.aln "+"-outseq "+reverse_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(reverse_file.name[:-23]+"_consensus.fasta")
@@ -263,9 +259,8 @@ def main():
             forward_file = open(Forward_seq.name[:-4]+"_Forward_Sequence.fastq", 'w+b')
             Forward_fastq = SeqIO.convert(Forward_seq, "abi",forward_file.name, "fastq" )
             print("Performing Quality control....")
-            os.system(seqtk+" trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk+" seq -q23 -n N "+forward_file.name[:-6] + "_QC.fastq"+" >"+forward_file.name[:-23]+"_consensus.fasta")
-            #os.system(seqtk +" seq -a "+forward_file.name[:-6] + "_QC.fastq >"+forward_file.name[:-23]+"_consensus.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N "+forward_file.name[:-6] + "_QC.fastq"+" >"+forward_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(forward_file.name[:-23]+"_consensus.fasta")
             if size.st_size > 100:
@@ -300,9 +295,9 @@ def main():
             forward_file = open(Forward_seq.name[:-4]+"_Forward_Sequence.fastq", 'w+b')
             Forward_fastq = SeqIO.convert(Forward_seq, "abi",forward_file.name, "fastq" )
             print("Performing Quality control....")
-            os.system(seqtk+" trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk + " seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_consensus.fasta")
-            #os.system(seqtk +" seq -a "+forward_file.name[:-6] + "_QC.fastq >"+forward_file.name[:-23]+"_consensus.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+forward_file.name+" > "+forward_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N " + forward_file.name[:-6] + "_QC.fastq" + " >" + forward_file.name[:-23] + "_consensus.fasta")
+            #os.system("seqtk  seq -a "+forward_file.name[:-6] + "_QC.fastq >"+forward_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(forward_file.name[:-23]+"_consensus.fasta")
             if size.st_size > 100:
@@ -365,11 +360,11 @@ def main():
             reverse_file_not_rev = open(Reverse_seq.name[:-4]+"_Reverse_Sequence_Not_Reversed.fastq", 'w+b')
             reverse_file = open(Reverse_seq.name[:-4]+"_Reverse_Sequence.fastq", 'w+b')
             Reverse_fastq = SeqIO.convert(Reverse_seq, "abi",reverse_file_not_rev.name, "fastq" )
-            os.system(seqtk+" seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
+            os.system("seqtk  seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
             print("Performing Quality control and building consensus sequence....")
-            os.system(seqtk+" trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk + " seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_consensus.fasta")
-            #os.system(seqtk+" seq -a "+reverse_file.name[:-6] + "_QC.fastq >"+reverse_file.name[:-23]+"_consensus.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_consensus.fasta")
+            #os.system("seqtk  seq -a "+reverse_file.name[:-6] + "_QC.fastq >"+reverse_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(reverse_file.name[:-23]+"_consensus.fasta")
             if size.st_size > 100:
@@ -406,11 +401,11 @@ def main():
             reverse_file_not_rev = open(Reverse_seq.name[:-4]+"_Reverse_Sequence_Not_Reversed.fastq", 'w+b')
             reverse_file = open(Reverse_seq.name[:-4]+"_Reverse_Sequence.fastq", 'w+b')
             Reverse_fastq = SeqIO.convert(Reverse_seq, "abi",reverse_file_not_rev.name, "fastq" )
-            os.system(seqtk+" seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
+            os.system("seqtk  seq -r "+reverse_file_not_rev.name+" > "+reverse_file.name)
             print("Performing Quality control and building consensus sequence....")
-            os.system(seqtk+" trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
-            os.system(seqtk + " seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_consensus.fasta")
-            #os.system(seqtk+" seq -a "+reverse_file.name[:-6] + "_QC.fastq >"+reverse_file.name[:-23]+"_consensus.fasta")
+            os.system("seqtk  trimfq -q 0.05 "+reverse_file.name+" > "+reverse_file.name[:-6] + "_QC.fastq")
+            os.system("seqtk  seq -q23 -n N " + reverse_file.name[:-6] + "_QC.fastq" + " >" + reverse_file.name[:-23] + "_consensus.fasta")
+            #os.system("seqtk  seq -a "+reverse_file.name[:-6] + "_QC.fastq >"+reverse_file.name[:-23]+"_consensus.fasta")
             count = count+1
             size = os.stat(reverse_file.name[:-23]+"_consensus.fasta")
             if size.st_size > 100:
