@@ -1,9 +1,11 @@
-# ASAP #
+![ASAP!](asap.gif?raw=true "ASAP!")
 
-**Automated Sanger Analysis Pipeline (ASAP): a tool for rapidly analyzing Sanger sequencing data with minimum user interference.
-(previously AMAP)**
+<hr>
 
 ## Introduction ##
+
+**Automated Sanger Analysis Pipeline (ASAP): a tool for rapidly analyzing Sanger sequencing data with minimum user interference.**
+
 ASAP is a code written in Python 3.x language. It incorporates various other programs to achieve its task.
 
 ASAP accepts AB1 chromatogram files in pairs (Forward & Reverse), reference sequence as template in FASTA format and generates final alignment.
