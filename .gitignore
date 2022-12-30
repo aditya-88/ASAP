@@ -7,3 +7,6 @@ __MACOS/
 
 # Result files
 *.fast*
+*.aln
+*.dnd
+*.txt
