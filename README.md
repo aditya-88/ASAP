@@ -109,7 +109,9 @@ Also, make sure you do not use Python 2.x. The program will only work with Pytho
 ## Citation ##
 If you use the ASAP in any of your work, then kindly cite the following:
 
+```text
 Singh A, Bhatia P. Automated Sanger Analysis Pipeline (ASAP): A Tool for Rapidly Analyzing Sanger Sequencing Data with Minimum User Interference. J Biomol Tech [Internet]. 2016 Oct 17 [cited 2016 Nov 12]; Available from: http://www.ncbi.nlm.nih.gov/pubmed/27790076
+```
 
 Thank you!
 
