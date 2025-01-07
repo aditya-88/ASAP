@@ -118,3 +118,9 @@ Thank you!
 *Please note that `ASAP` has recenlty gone through a major overhaul, it might be that a few of the descriptions written above will not match, but the functionality remains the same*
 
 ***Hope ASAP helps you in achieving things faster and better***
+
+## Star History ##
+
+I'm humbled to see this small tool being constantly liked by my peers!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=aditya-88/ASAP&type=Date)](https://star-history.com/#aditya-88/ASAP&Date)
