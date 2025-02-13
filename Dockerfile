@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 # Install python dependencies
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir biopython
+RUN pip install --no-cache-dir biopython setuptools
 # Clone the repository and CD into it
 RUN git clone https://github.com/aditya-88/ASAP.git
 WORKDIR /ASAP
