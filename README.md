@@ -123,4 +123,4 @@ Thank you!
 
 I'm humbled to see this small tool being constantly liked by my peers!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=addityea/ASAP&type=Date)](https://star-history.com/#aditya-88/ASAP&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=addityea/ASAP&type=Date)](https://star-history.com/#addityea/ASAP&Date)
